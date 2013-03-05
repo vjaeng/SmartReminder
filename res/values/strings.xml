@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SmartReminder</string>
+    <string name="title_reminder_detail">Reminder Detail</string>
+    <string name="add_item">Add</string>
+    <string name="about">About</string>
+    <string name="done">DONE</string>
+    <string name="discard">DISCARD</string>
+</resources>

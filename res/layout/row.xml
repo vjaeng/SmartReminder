@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+    <RelativeLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="5dip"
+     >
+        <ImageView android:id="@+id/icon"
+            android:layout_width="25dp"
+            android:layout_height="37dp"
+            android:layout_marginRight="10dip"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_launcher"
+            android:contentDescription="Icon to represent the action"
+             />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/icon">
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/info_area"
+                android:orientation="vertical"
+                android:layout_width="0px"
+                android:layout_weight="80"
+                android:layout_height="wrap_content"
+            >
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+
+                    android:textStyle="bold"
+
+                     />
+                <!--
+                    android:textColor="@color/text_color1"
+                    android:textColorHighlight="@color/text_color2"
+                     -->
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="Date"
+                     />
+                <!--
+                                android:textColor="@color/text_color2"
+                                 -->
+                <TextView
+                    android:id="@+id/repeat"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/event_location"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="Repeat"
+                     />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Type"
+                     />
+                <!--
+                                android:textColor="@color/text_color2"
+                 -->
+
+            </LinearLayout>
+
+         </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+     <!-- this is the expandable view that is initially hidden and will slide out when the more button is pressed -->
+    <!--
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:id="@+id/expandable"
+    android:background="#000000">
+
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:text="Action A" />
+
+    <Button
+            android:id="@+id/details"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:text="Action B"/>
+
+    </LinearLayout>
+        -->
+</LinearLayout>

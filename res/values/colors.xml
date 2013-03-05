@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<drawable name="ab_bg_black">#aa000000</drawable>
+    <color name="row_color1" >#FFFFFF</color>
+    <color name="row_color2" >#EFF2FB</color>
+	
+    <color name="background">#EFF2FB</color>
+</resources>
