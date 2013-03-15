@@ -22,12 +22,14 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
-                  android:divider="?android:attr/dividerVertical"
+
                   android:showDividers="middle"
-                  android:dividerPadding="12dp">
+                  android:dividerPadding="12dp"
+                  android:gravity="center_vertical">
 
         <include layout="@layout/actionbar_discard_button"/>
         <include layout="@layout/actionbar_done_button"/>
     </LinearLayout>
+    <!--android:divider="?android:attr/dividerVertical"-->
 
 </LinearLayout>

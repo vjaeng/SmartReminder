@@ -43,6 +43,7 @@ public class ReminderArrayAdapter extends ArrayAdapter<Reminder> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(TAG, "Entrando a getView");
     	if (reminderList == null || reminderList.size() == 0 ){
     		return null;
     	} else{	

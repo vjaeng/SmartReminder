@@ -62,8 +62,8 @@ public class ReminderManagerService extends Service {
     }
 
     // EventBus
-    public void onEvent (Events.ReminderNewEvent event){
-        Log.d(TAG, "Evento tipo: ReminderNewEvent. Reminder recibido: " + event.getReminder().getName() + " " +  event.getReminder().getNotes());
+    public void onEvent (Events.ReminderCreateEvent event){
+        Log.d(TAG, "Evento tipo: ReminderCreateEvent. Reminder recibido: " + event.getReminder().getName() + " " +  event.getReminder().getNotes());
 
         DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "reminder-db", null);
         db = helper.getWritableDatabase();
@@ -74,6 +74,28 @@ public class ReminderManagerService extends Service {
        // reminder.setId(Long.valueOf("1"));
 
         reminderDao.insert(reminder);
+        Log.d(TAG, "Reminder insertado en la base de datos...");
+
+        // Close database
+        db.close();
+
+        // Posting ReminderProcessedEvent to notify processed reminder
+        EventBus.getDefault().post(new Events.ReminderProcessedEvent(reminder));
+    }
+
+    // EventBus
+    public void onEvent (Events.ReminderUpdateEvent event){
+        Log.d(TAG, "Evento tipo: ReminderCreateEvent. Reminder recibido: " + event.getReminder().getName() + " " +  event.getReminder().getNotes());
+
+        DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "reminder-db", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        reminderDao = daoSession.getReminderDao();
+        Reminder reminder = event.getReminder();
+        // reminder.setId(Long.valueOf("1"));
+
+        reminderDao.update(reminder);
         Log.d(TAG, "Reminder insertado en la base de datos...");
 
         // Close database

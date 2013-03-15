@@ -9,11 +9,14 @@
             android:targetSdkVersion="16"/>
 
     <application
-
+            android:name="org.holoeverywhere.app.Application"
             android:allowBackup="true"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Sherlock.Light" android:name=".ReminderApplication">
+            android:theme="@style/Holo.Theme.Light">
+            <!--.Viberlabs_light"-->
+
+            <!--android:theme="@style/Theme.Sherlock.Light" android:name=".ReminderApplication">-->
 
         <activity
                 android:name="com.viberlabs.app.smartreminder.ReminderListActivity"

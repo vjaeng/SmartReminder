@@ -6,4 +6,6 @@
     <color name="row_color2" >#EFF2FB</color>
 	
     <color name="background">#EFF2FB</color>
+
+    <color name="pressed_viberlabs_light">#CC0099CC</color>
 </resources>

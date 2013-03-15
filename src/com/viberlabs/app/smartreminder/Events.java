@@ -13,11 +13,26 @@ public class Events {
     /**
      * Clase de evento para pasar un nuevo event para creación
      */
-    public static class ReminderNewEvent {
+    public static class ReminderCreateEvent {
 
         private final Reminder reminder;
 
-        public ReminderNewEvent(Reminder reminder) {
+        public ReminderCreateEvent(Reminder reminder) {
+            this.reminder = reminder;
+        }
+
+        public Reminder getReminder() {
+            return reminder;
+        }
+    }
+    /**
+     * Clase de evento para pasar un evento para modificacion
+     */
+    public static class ReminderUpdateEvent {
+
+        private final Reminder reminder;
+
+        public ReminderUpdateEvent(Reminder reminder) {
             this.reminder = reminder;
         }
 

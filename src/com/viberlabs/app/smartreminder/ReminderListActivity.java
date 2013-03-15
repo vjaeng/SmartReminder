@@ -9,6 +9,7 @@ import com.actionbarsherlock.view.MenuItem;
 import de.greenrobot.event.EventBus;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import org.holoeverywhere.app.Activity;
 
 
 /**
@@ -101,10 +102,10 @@ public class ReminderListActivity extends SherlockFragmentActivity
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
-           // Bundle arguments = new Bundle();
-           // arguments.putString(ReminderDetailFragment.ARG_ITEM_ID, id);
-            ReminderDetailFragment fragment = new ReminderDetailFragment();
-           // fragment.setArguments(arguments);
+            Bundle arguments = new Bundle();
+            arguments.putString(AddReminderFragment.ARG_MODE, AddReminderFragment.MODE_TWO_PANE);
+            AddReminderFragment fragment = new AddReminderFragment();
+            fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.reminder_detail_container, fragment)
                     .commit();
@@ -112,9 +113,18 @@ public class ReminderListActivity extends SherlockFragmentActivity
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
-            Intent detailIntent = new Intent(this, ReminderDetailActivity.class);
+            // Reenvía el evento de ReminderSelectedEvent
+//            Object eventObject = EventBus.getDefault().getStickyEvent(Events.ReminderSelectedEvent.class);
+//            //
+//            if (eventObject != null){
+//                EventBus.getDefault().post((Events.ReminderSelectedEvent) eventObject);
+//            }
+
+            //Intent detailIntent = new Intent(this, ReminderDetailActivity.class);
+            Intent detailIntent = new Intent(this, ReminderDetailActivity.class); // AddReminderActivity
            // detailIntent.putExtra(ReminderDetailFragment.ARG_ITEM_ID, id);
-            startActivity(detailIntent);
+            int rqstCode = 0;
+            startActivityForResult(detailIntent, rqstCode);
         }
     }
 

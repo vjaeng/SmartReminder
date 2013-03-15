@@ -2,10 +2,12 @@ package com.viberlabs.app.smartreminder;
 
 import android.content.Intent;
 import android.os.Bundle;
+//import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import org.holoeverywhere.app.Activity;
 
 
 /**
@@ -17,7 +19,7 @@ import com.actionbarsherlock.view.MenuItem;
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link ReminderDetailFragment}.
  */
-public class ReminderDetailActivity extends SherlockFragmentActivity {
+public class ReminderDetailActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,17 @@ public class ReminderDetailActivity extends SherlockFragmentActivity {
 		if (savedInstanceState == null) {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
-			Bundle arguments = new Bundle();
-			arguments.putString(ReminderDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(ReminderDetailFragment.ARG_ITEM_ID));
-			ReminderDetailFragment fragment = new ReminderDetailFragment();
-			fragment.setArguments(arguments);
+//			Bundle arguments = new Bundle();
+//			arguments.putString(AddReminderFragment.ARG_ITEM_ID, getIntent()
+//					.getStringExtra(AddReminderFragment.ARG_ITEM_ID));
+//            AddReminderFragment fragment = new AddReminderFragment();
+//			fragment.setArguments(arguments);
+
+            Bundle arguments = new Bundle();
+            arguments.putString(AddReminderFragment.ARG_MODE, AddReminderFragment.MODE_SINGLE_PANE);
+            AddReminderFragment fragment = new AddReminderFragment();
+            fragment.setArguments(arguments);
+
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.reminder_detail_container, fragment).commit();
 		}

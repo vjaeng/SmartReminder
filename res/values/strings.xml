@@ -5,6 +5,13 @@
     <string name="title_reminder_detail">Reminder Detail</string>
     <string name="add_item">Add</string>
     <string name="about">About</string>
-    <string name="done">DONE</string>
-    <string name="discard">DISCARD</string>
+    <string name="done">Done</string>
+    <string name="discard">Discard</string>
+
+    <string name="reminder_name_hint">Need to remember something?</string>
+
+    <string name="add_reminder_due_date_label">Date</string>
+    <string name="add_reminder_due_time_label">Time</string>
+    <string name="add_reminder_due_time">1030</string>
+    <string name="add_reminder_notes_label">Notes</string>
 </resources>

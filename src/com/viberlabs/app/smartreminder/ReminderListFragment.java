@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-//import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.actionbarsherlock.app.SherlockListFragment;
 import de.greenrobot.event.EventBus;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
@@ -79,36 +77,8 @@ public class ReminderListFragment extends SherlockListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        //EventBus
-//        EventBus.getDefault().register(this);
-//        Log.d(TAG, "Registrando EventBus en onCreate...");
-
         //EventBus
         EventBus.getDefault().register(this);
-
-        
-        // TODO VJaen
-//        int layout = android.R.layout.simple_list_item_1;
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1){//.ECLAIR_MR1)
-//        	Log.e(this.getClass().getName().toString(), "Entrando a [Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_MR1]" + Build.VERSION.SDK_INT + ">=" + Build.VERSION_CODES.ECLAIR_MR1+"?");
-//           layout = android.R.layout.simple_list_item_activated_1;
-//        }
-//        Log.e(this.getClass().getName().toString(), "Seteando en ListAdapter...");
-//        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(
-//              getActivity(),
-//              layout,
-//              android.R.id.text1,
-//              DummyContent.ITEMS));
-//        Log.d(this.getClass().getName().toString(), "ListAdapter seteado...");
-        
-        // TODO: replace with a real list adapter.
-//        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(
-//                getActivity(),
-//                android.R.layout.simple_list_item_activated_1,
-//                android.R.id.text1,
-//                DummyContent.ITEMS));
-
-
     }
 
     @Override
@@ -155,6 +125,7 @@ public class ReminderListFragment extends SherlockListFragment {
 
         Reminder reminder = (Reminder) reminderList.get(position);
      //   reminder.setPosition(DummyContent.ITEMS.get(position).id);
+        //
         EventBus.getDefault().postSticky(new Events.ReminderSelectedEvent(reminder));
     }
 
@@ -192,7 +163,7 @@ public class ReminderListFragment extends SherlockListFragment {
 
     // EventBus
     public void onEvent (Events.ReminderProcessedEvent event){
-        Crouton.makeText(getActivity(), "Reminder procesado " + event.getReminder().getName() + " - " + event.getReminder().getId(), Style.INFO).show();
+        Crouton.makeText(getActivity(), "The reminder was created or updated", Style.INFO).show();
         // Posting GetRemindersEvent to notify processed reminder
         Reminder reminder = new Reminder();
         EventBus.getDefault().post(new Events.GetRemindersEvent(reminder));
@@ -208,176 +179,16 @@ public class ReminderListFragment extends SherlockListFragment {
         arrayAdapter = new ReminderArrayAdapter(
         getActivity(), R.layout.row, reminderList);
         setListAdapter(arrayAdapter);
-
-//        Log.d(TAG, "EL reminderList tiene " + reminderList.size());
-//
-//        // Google Card
-//        googleCardsAdapter = new GoogleCardsAdapter(getActivity(),  R.layout.activity_googlecards_card,
-//        reminderList);
-//
-//        googleCardsAdapter.
-//        getListView().setAdapter(googleCardsAdapter);
-//        Log.d(TAG, "Seteado el ListAdapter a googleCardsAdapter");
     }
-
-//    // **** SERVICE INVOCATION ****
-//    // Service used to get reminders list
-//    private IReminderService reminderService;
-//
-//    /****/
-//    // Is the service bound currently?
-//    private boolean bound = false;
-//
-//    // Connection to the stock service, handles lifecycle events
-//    private ServiceConnection connection = new ServiceConnection() {
-//
-//        public void onServiceConnected(ComponentName className, IBinder service) {
-//            reminderService = IReminderService.Stub.asInterface(service);
-//            Log.d(TAG, "Connected to service");
-//
-//
-//
-//            try {
-//                // Invoca este metodo solo para iniciar el servicio.
-//                Log.d(TAG, "Invoca este metodo solo para iniciar el servicio");
-//                reminderService.startService();
-//            } catch (RemoteException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            //
-//
-//        }
-//
-//        public void onServiceDisconnected(ComponentName className) {
-//            reminderService = null;
-//            Log.d(TAG, "Disconnected from service");
-//        }
-//    };
-//
-//
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        Log.d(TAG, "onStart - Inicio");
-//        // create initial list
-//        if (!bound) {
-//            bound = getActivity().bindService(new Intent(getActivity(),
-//                    ReminderManagerService.class), connection,
-//                    Context.BIND_AUTO_CREATE);
-//            Log.d(TAG, "Bound to service: " + bound);
-//
-//        }
-//        if (!bound) {
-//            Log.e(TAG, "Failed to bind to service");
-//            throw new RuntimeException("Failed to bind to service");
-//        }
-//
-//        Log.d(TAG, "onStart - Fin");
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        Log.d(TAG, "onPause - Inicio");
-//        super.onPause();
-//        if (bound) {
-//            bound = false;
-//            getActivity().unbindService(connection);
-//            Log.d(TAG, "onPause - UnbindService to service");
-//        }
-//        Log.d(TAG, "onPause - Fin");
-//    }
 
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy - Inicio");
         super.onDestroy();
-        // disconnect from the stock service
-//        if (bound) {
-//            bound = false;
-//            getActivity().unbindService(connection);
-//            Log.d(TAG, "onDestroy - UnbindService to service");
-//        }
 
         //EventBus
         EventBus.getDefault().unregister(this);
 
         Log.d(TAG, "onDestroy - Fin");
     }
-
-
-    // GOOGLE CARD
-
-//    GoogleCardsAdapter googleCardsAdapter;// = new GoogleCardsAdapter(getActivity());
-//
-//    private class GoogleCardsAdapter extends ArrayAdapter<Reminder> {
-//        //private String TAG = ReminderArrayAdapter.class.getName();
-//
-//        private List<Reminder> reminderList;
-//        private LayoutInflater mInflater;
-//
-//        private Context mContext;
-//
-//        public GoogleCardsAdapter(Context context, List<Integer> indices, List<Reminder> reminderList) {
-//            //,	int textViewResourceId,
-//            super(indices);
-//            //super(context, android.R.layout.simple_list_item_1, reminderList);
-//            //resource, textViewResourceId,
-//            // TODO Auto-generated constructor stub
-//            this.reminderList = reminderList;
-//
-//           // mInflater = LayoutInflater.from(context);
-//            Log.d(TAG, "googleCardsAdapter.Constructor.  Reminders recibidos: " + reminderList.size());
-//        }
-//
-//
-//
-////        public GoogleCardsAdapter(Context context) {
-////            mContext = context;
-////        }
-//
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//// TODO Auto-generated method stub
-//            return getCustomView(position, convertView, parent);
-//        }
-//
-//        //        public View getCustomView(int position, View convertView, ViewGroup parent) {
-//
-//
-//        public View getCustomView(int position, View convertView, ViewGroup parent) {
-//            Log.d(TAG, "Dentro de GoogleCardsAdapter.getView para posicion " + position);
-//            View view = convertView;
-//            if (view == null) {
-//                view = LayoutInflater.from(mContext).inflate(R.layout.activity_googlecards_card, parent, false);
-//
-//            }
-//
-//            TextView textView = (TextView) view.findViewById(R.id.activity_googlecards_card_textview);
-//            textView.setText("This is card is for " + (getItem(position).getName()));
-//
-//            ImageView imageView = (ImageView) view.findViewById(R.id.activity_googlecards_card_imageview);
-//            int imageResId;
-//
-//            switch (position % 5) {
-//                case 0:
-//                    imageResId = R.drawable.img_nature1;
-//                    break;
-//                case 1:
-//                    imageResId = R.drawable.img_nature2;
-//                    break;
-//                case 2:
-//                    imageResId = R.drawable.img_nature3;
-//                    break;
-//                case 3:
-//                    imageResId = R.drawable.img_nature4;
-//                    break;
-//                default:
-//                    imageResId = R.drawable.img_nature5;
-//            }
-//            imageView.setImageResource(imageResId);
-//
-//            return view;
-//        }
-//    }
 }
