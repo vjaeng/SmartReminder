@@ -2,11 +2,11 @@ package com.viberlabs.app.smartreminder;
 
 import android.app.Service;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.util.Log;
-import de.greenrobot.event.EventBus;
 import com.viberlabs.app.smartreminder.DaoMaster.DevOpenHelper;
-import android.database.sqlite.SQLiteDatabase;
+import de.greenrobot.event.EventBus;
 
 import java.util.List;
 

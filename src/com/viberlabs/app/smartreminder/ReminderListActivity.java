@@ -9,7 +9,6 @@ import com.actionbarsherlock.view.MenuItem;
 import de.greenrobot.event.EventBus;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-import org.holoeverywhere.app.Activity;
 
 
 /**

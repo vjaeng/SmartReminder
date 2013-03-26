@@ -2,12 +2,11 @@ package com.viberlabs.app.smartreminder;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import org.holoeverywhere.app.Activity;
+
+//import android.support.v4.app.FragmentActivity;
 
 
 /**

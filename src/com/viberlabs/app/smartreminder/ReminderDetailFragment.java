@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.actionbarsherlock.app.SherlockFragment;
 import com.viberlabs.app.smartreminder.dummy.DummyContent;
 import de.greenrobot.event.EventBus;
