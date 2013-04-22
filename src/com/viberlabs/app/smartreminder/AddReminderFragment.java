@@ -3,27 +3,26 @@ package com.viberlabs.app.smartreminder;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragment;
 import de.greenrobot.event.EventBus;
-import org.holoeverywhere.LayoutInflater;
-import org.holoeverywhere.app.Fragment;
-import org.holoeverywhere.widget.Spinner;
+//import org.holoeverywhere.LayoutInflater;
+//import org.holoeverywhere.app.Fragment;
+//import org.holoeverywhere.widget.Spinner;
 
 //import android.view.LayoutInflater;
 
 /**
  * A fragment representing a single Reminder detail screen.
- * This fragment is either contained in a {@link com.viberlabs.app.smartreminder.ReminderListActivity}
+ * This fragment is either contained in a {@link ReminderListMainActivity}
  * in two-pane mode (on tablets) or a {@link com.viberlabs.app.smartreminder.ReminderDetailActivity}
  * on handsets.
  */
-public class AddReminderFragment extends Fragment {
+public class AddReminderFragment extends SherlockFragment {
     private String TAG = AddReminderFragment.class.getName();
 
     private View rootView;
@@ -42,6 +41,8 @@ public class AddReminderFragment extends Fragment {
     public static final String ARG_MODE = "mode";
     public static final String MODE_SINGLE_PANE = "single_pane";
     public static final String MODE_TWO_PANE = "two_pane";
+
+    private Spinner typesSpinner;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -69,9 +70,9 @@ public class AddReminderFragment extends Fragment {
 
 
         if (mode != null && mode.equals(MODE_SINGLE_PANE)){
-            // TODO Ver como se puede implementar "android:divider" para separar los botones
+
             // Inflate a "Done/Discard" custom action bar view.
-            /*org.holoeverywhere.LayoutInflater*/ inflater = (/*org.holoeverywhere.*/LayoutInflater) getSupportActionBar().getThemedContext()
+            /*org.holoeverywhere.LayoutInflater*/ inflater = (/*org.holoeverywhere.*/LayoutInflater) getSherlockActivity().getSupportActionBar().getThemedContext()
                     .getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
             Log.d(TAG, "Antes de inflar el customActionBarView");
             final View customActionBarView = inflater.inflate(
@@ -115,7 +116,7 @@ public class AddReminderFragment extends Fragment {
 
 
             // Show the custom action bar view and hide the normal Home icon and title.
-            final ActionBar actionBar = getSupportActionBar();
+            final ActionBar actionBar = getSherlockActivity().getSupportActionBar();
             actionBar.setDisplayOptions(
                     ActionBar.DISPLAY_SHOW_CUSTOM,
                     ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME
@@ -123,6 +124,16 @@ public class AddReminderFragment extends Fragment {
             actionBar.setCustomView(customActionBarView, new ActionBar.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
+
+            // Carga el spinner de tipos
+            typesSpinner = (Spinner) customActionBarView.findViewById(R.id.types_spinner);
+
+            MyCustomAdapter myCustomAdapter = new MyCustomAdapter(getActivity(), R.layout.row, ReminderTypes);
+            if (myCustomAdapter != null) {
+                typesSpinner.setAdapter(myCustomAdapter);
+            }
+
+
         }
 
         rootView = inflater.inflate(R.layout.add_reminder, container, false);
@@ -144,11 +155,8 @@ public class AddReminderFragment extends Fragment {
         //
 //        Views.inject(this);
 
-        Spinner mySpinner = (Spinner) rootView.findViewById(R.id.spinner);
-        MyCustomAdapter myCustomAdapter = new MyCustomAdapter(getActivity(), R.layout.row, ReminderTypes);
-        if (myCustomAdapter != null) {
-            mySpinner.setAdapter(myCustomAdapter);
-        }
+        //Spinner mySpinner = (Spinner) rootView.findViewById(R.id.spinner);
+
 
         return rootView;
     }
@@ -170,10 +178,10 @@ public class AddReminderFragment extends Fragment {
         EventBus.getDefault().removeStickyEvent(event);
     }
 
-    @Override
-    public org.holoeverywhere.LayoutInflater getLayoutInflater() {
-        return (org.holoeverywhere.LayoutInflater) getActivity().getWindow().getLayoutInflater();
-    }
+//    @Override
+//    public org.holoeverywhere.LayoutInflater getLayoutInflater() {
+//        return (org.holoeverywhere.LayoutInflater) getActivity().getWindow().getLayoutInflater();
+//    }
 
     // SPINNER ADAPTER
 
@@ -208,7 +216,7 @@ public class AddReminderFragment extends Fragment {
 
             if (ReminderTypes[position] == "0") {
                 icon.setImageResource(R.drawable.ic_launcher);
-                type.setText("Generic reminder");
+                type.setText("Generic");
             } else if (ReminderTypes[position] == "1") {
                 icon.setImageResource(R.drawable.birthday);
                 type.setText("Birthday");
@@ -217,13 +225,13 @@ public class AddReminderFragment extends Fragment {
                 type.setText("Phone Call");
             } else if (ReminderTypes[position] == "3") {
                 icon.setImageResource(R.drawable.mail);
-                type.setText("Send Mail");
+                type.setText("EMail");
             } else if (ReminderTypes[position] == "4") {
                 icon.setImageResource(R.drawable.medicine);
-                type.setText("Take Medicine");
+                type.setText("Medicine");
             } else if (ReminderTypes[position] == "5") {
                 icon.setImageResource(R.drawable.medicine);
-                type.setText("Medical Appointment");
+                type.setText("Medical");
             }
 
             return row;

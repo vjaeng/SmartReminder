@@ -12,7 +12,7 @@ import de.greenrobot.event.EventBus;
 
 /**
  * A fragment representing a single Reminder detail screen.
- * This fragment is either contained in a {@link ReminderListActivity}
+ * This fragment is either contained in a {@link ReminderListMainActivity}
  * in two-pane mode (on tablets) or a {@link ReminderDetailActivity}
  * on handsets.
  */

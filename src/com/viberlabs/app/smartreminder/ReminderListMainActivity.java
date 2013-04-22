@@ -27,10 +27,10 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  * {@link ReminderListFragment.Callbacks} interface
  * to listen for item selections.
  */
-public class ReminderListActivity extends SherlockFragmentActivity
+public class ReminderListMainActivity extends SherlockFragmentActivity
         implements ReminderListFragment.Callbacks {
 
-    private String TAG = ReminderListActivity.class.getName();
+    private String TAG = ReminderListMainActivity.class.getName();
 
     public static int THEME = R.style.Theme_Sherlock_Light ;
 
@@ -177,6 +177,12 @@ public class ReminderListActivity extends SherlockFragmentActivity
                 Intent intent = new Intent(getApplicationContext(),
                         AddReminderActivity.class);
                 startActivityForResult(intent, 1);
+
+//                AddReminderFragment fragment = new AddReminderFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.reminder_detail_container, fragment)
+//                        .commit();
+
                 break;
 
             case 1:

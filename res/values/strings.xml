@@ -14,4 +14,14 @@
     <string name="add_reminder_due_time_label">Time</string>
     <string name="add_reminder_due_time">1030</string>
     <string name="add_reminder_notes_label">Notes</string>
+
+
+    <string-array name="reminder_types_array">
+        <item>Generic</item>
+        <item>Birthday</item>
+        <item>Phone Call</item>
+        <item>EMail</item>
+        <item>Take Medicine</item>
+        <item>Medical Appointment</item>
+    </string-array>
 </resources>

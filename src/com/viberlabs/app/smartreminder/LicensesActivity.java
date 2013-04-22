@@ -42,7 +42,7 @@ public class LicensesActivity extends SherlockActivity {
                 // http://developer.android.com/design/patterns/navigation.html#up-vs-back
                 //
                 NavUtils.navigateUpTo(this, new Intent(this,
-                        ReminderListActivity.class));
+                        ReminderListMainActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

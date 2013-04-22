@@ -3,8 +3,9 @@ package com.viberlabs.app.smartreminder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import org.holoeverywhere.app.Activity;
+//import org.holoeverywhere.app.Activity;
 
 //import android.support.v4.app.FragmentActivity;
 
@@ -12,13 +13,13 @@ import org.holoeverywhere.app.Activity;
 /**
  * An activity representing a single Reminder detail screen. This activity is
  * only used on handset devices. On tablet-size devices, item add_reminder are
- * presented side-by-side with a list of items in a {@link ReminderListActivity}
+ * presented side-by-side with a list of items in a {@link ReminderListMainActivity}
  * .
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link ReminderDetailFragment}.
  */
-public class ReminderDetailActivity extends Activity {
+public class ReminderDetailActivity extends SherlockFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class ReminderDetailActivity extends Activity {
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
 			NavUtils.navigateUpTo(this, new Intent(this,
-					ReminderListActivity.class));
+					ReminderListMainActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

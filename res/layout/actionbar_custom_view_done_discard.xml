@@ -22,14 +22,24 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
-
+                  android:divider="?android:attr/dividerVertical"
                   android:showDividers="middle"
                   android:dividerPadding="12dp"
                   android:gravity="center_vertical">
 
         <include layout="@layout/actionbar_discard_button"/>
+        <Spinner
+                android:id="@+id/types_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+
+
+                />
         <include layout="@layout/actionbar_done_button"/>
     </LinearLayout>
-    <!--android:divider="?android:attr/dividerVertical"-->
+    <!--android:divider="?android:attr/dividerVertical"
+
+                    android:entries="@array/reminder_types_array"-->
 
 </LinearLayout>

@@ -19,16 +19,18 @@
     android:id="@+id/actionbar_done"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_weight="1">
+    android:layout_weight=".20">
 
     <TextView style="?android:actionBarTabTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingRight="20dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+
         android:drawableLeft="@drawable/ic_action_done_holo_light"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/done" />
+        android:gravity="center_vertical|center_horizontal"
+         />
 
+    <!-- android:text="@string/done"
+    android:paddingRight="20dp"-->
 </FrameLayout>
